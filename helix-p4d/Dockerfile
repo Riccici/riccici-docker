@@ -12,12 +12,21 @@ FROM ubuntu:jammy
 LABEL vendor="Riccici"
 LABEL maintainer="Riccici (lqwork2023@gmail.com)"
 
+# notice: in github actions, get warning "debconf: delaying package configuration, since apt-utils is not installed"
+#         see https://github.com/phusion/baseimage-docker/issues/319
+#         fix it by setting two environment variables below
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NOWARNINGS="yes"
 
 # Install prerequisites && add Perforce package repository
 RUN \
     apt-get update && \
     apt-get install -y wget gnupg2 apt-utils
 
+
+# Install Perforce package repository
+# notice: in perforce's official document, perforce.pubkey save on /usr/share/keyrings/perforce.gpg
+#         but in my case, it doesn't work in Dockerfile, save it on /etc/apt/trusted.gpg.d/perforce.gpg instead works well
 RUN \
     wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor | tee /etc/apt/trusted.gpg.d/perforce.gpg && \
     echo "deb http://package.perforce.com/apt/ubuntu jammy release" > /etc/apt/sources.list.d/perforce.list && \
