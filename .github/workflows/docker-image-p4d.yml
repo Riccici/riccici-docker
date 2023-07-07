@@ -8,6 +8,7 @@ on:
     branches: [ "main" ]
     paths:
       - helix-p4d
+  workflow_dispatch:
 jobs:
   build-image:
     name: build helix p4d image
