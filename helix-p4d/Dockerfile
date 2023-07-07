@@ -52,12 +52,11 @@ ENV P4ROOT=$P4HOME/root \
     PRDEPOTS=$P4HOME/depot \
     P4CKP=$P4HOME/checkpoints
 
-ARG NAME=helix-core-server
-ARG P4NAME=master
+ARG NAME=project-name
+ARG P4NAME=helix-core-master
 ARG P4PORT=1666
 ARG P4USER=admin
 ARG P4PASSWD=admin
-ARG P4CHARSET=utf8
 
 
 ENV NAME=$NAME \
@@ -65,7 +64,6 @@ ENV NAME=$NAME \
     P4PORT=$P4PORT \
     P4USER=$P4USER \
     P4PASSWD=$P4PASSWD \
-    P4CHARSET=$P4CHARSET \
     JNL_PREFIX=$P4NAME
 
 EXPOSE $P4PORT
