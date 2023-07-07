@@ -56,7 +56,7 @@ ARG NAME=helix-core-server
 ARG P4NAME=master
 ARG P4PORT=1666
 ARG P4USER=admin
-ARG P4PASSWD=qwer1234
+ARG P4PASSWD=admin
 ARG P4CHARSET=utf8
 
 
