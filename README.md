@@ -27,3 +27,25 @@ There are additional changes in the Dockerfile for Github Actions:
 - The server is forcefully initiated in Unicode mode.
 - The server is forcefully initiated in case-sensitive mode.
 - The super user's username and password are set to `admin` by default.
+
+##### Usage
+
+simple test run:
+
+```bash
+docker run --rm -p 1666:1666 ghcr.io/riccici/helix-p4d:latest
+```
+
+All environment variables version:
+
+```bash
+docker run -d \
+    -p 1666:1666 \
+    -e NAME=test-project-name \
+    -e P4NAME=helix-core-master \
+    -e P4PORT=1666 \
+    -e P4USER=admin \
+    -e P4PASSWD=qwer1234 \
+    -v ~/.helix-p4d:/p4 \
+    ghcr.io/riccici/helix-p4d:latest
+```
