@@ -16,10 +16,10 @@ LABEL maintainer="Riccici (lqwork2023@gmail.com)"
 # Install prerequisites && add Perforce package repository
 RUN \
     apt-get update && \
-    apt-get install -y wget gnupg2
+    apt-get install -y wget gnupg2 apt-utils
 
 RUN \
-    wget -qO - https://package.perforce.com/perforce.pubkey | apt-key add - && \
+    wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor | tee /etc/apt/trusted.gpg.d/perforce.gpg && \
     echo "deb http://package.perforce.com/apt/ubuntu jammy release" > /etc/apt/sources.list.d/perforce.list && \
     apt-get update
 
