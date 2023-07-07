@@ -28,7 +28,7 @@ RUN \
 # notice: in perforce's official document, perforce.pubkey save on /usr/share/keyrings/perforce.gpg
 #         but in my case, it doesn't work in Dockerfile, save it on /etc/apt/trusted.gpg.d/perforce.gpg instead works well
 RUN \
-    wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor | tee /etc/apt/trusted.gpg.d/perforce.gpg && \
+    wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor | tee /etc/apt/trusted.gpg.d/perforce.gpg > /dev/null && \
     echo "deb http://package.perforce.com/apt/ubuntu jammy release" > /etc/apt/sources.list.d/perforce.list && \
     apt-get update
 
