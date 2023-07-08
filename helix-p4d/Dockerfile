@@ -48,15 +48,16 @@ RUN chmod +x /usr/local/bin/init.sh && \
 
 ENV P4HOME=/p4
 
-ENV P4ROOT=$P4HOME/root \
-    PRDEPOTS=$P4HOME/depot \
-    P4CKP=$P4HOME/checkpoints
+ENV P4ROOT=$P4HOME \
+    P4DEPOTS=$P4HOME/depot \
+    P4CKP=$P4HOME/checkpoints \
+    P4LOGS=$P4HOME/logs 
 
 ARG NAME=project-name
 ARG P4NAME=helix-core-master
 ARG P4PORT=1666
 ARG P4USER=admin
-ARG P4PASSWD=admin
+ARG P4PASSWD=admin@password
 
 
 ENV NAME=$NAME \
@@ -67,12 +68,10 @@ ENV NAME=$NAME \
     JNL_PREFIX=$P4NAME
 
 EXPOSE $P4PORT
-VOLUME $P4HOME
+VOLUME $P4ROOT
+WORKDIR $P4HOME
 
-ENTRYPOINT \
-    init.sh && \
-    /usr/bin/tail -f $P4ROOT/logs/log
-
+ENTRYPOINT [ "/usr/local/bin/init.sh" ]
 
 HEALTHCHECK \
     --interval=2m \

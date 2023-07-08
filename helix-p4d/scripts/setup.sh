@@ -16,12 +16,7 @@ if ! p4dctl list 2>/dev/null | grep -q "$NAME"; then
     # -r:   Perforce Server's root directory. 
     # -u:   Perforce Server's super user.
     # -P:   Perforce Server's super user password.
-    # --case:  Perforce Server's case sensitivity. (0=sensitive[default],1=insensitive)
     # --unicode: Enable Perforce Server's unicode support.
-    /opt/perforce/sbin/configure-helix-p4d.sh "$NAME" -n -p "$P4PORT" -r "$P4ROOT" -u "$P4USER" -P "${P4PASSWD}" --case --unicode
+    # --case:  Perforce Server's case sensitivity. (0=sensitive[default],1=insensitive)
+    /opt/perforce/sbin/configure-helix-p4d.sh "$NAME" -n -p "$P4PORT" -r "$P4ROOT" -u "$P4USER" -P "${P4PASSWD}" --unicode --case 0
 fi
-
-p4 configure set $P4NAME#server.depot.root=$P4DEPOTS
-p4 configure set $P4NAME#journalPrefix=$P4CKP/$JNL_PREFIX
-
-p4dctl start -t p4d "$NAME"

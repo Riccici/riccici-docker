@@ -27,9 +27,9 @@ p4d -r $P4ROOT -jr -z $P4CKP/latest
 p4d -r $P4ROOT -xu
 
 ## Set key environment variables
-p4d -r $P4ROOT "-cset security=2"
-p4d -r $P4ROOT "-cset ${P4NAME}#server.depot.root=${P4DEPOTS}"
-p4d -r $P4ROOT "-cset ${P4NAME}#journalPrefix=${P4CKP}/${JNL_PREFIX}"
+#p4d -r $P4ROOT "-cset security=2"
+#p4d -r $P4ROOT "-cset ${P4NAME}#server.depot.root=${P4DEPOTS}"
+#p4d -r $P4ROOT "-cset ${P4NAME}#journalPrefix=${P4CKP}/${JNL_PREFIX}"
 
 ## Start Perforce
-p4d -r$P4ROOT -p$P4PORT -L$P4LOG -J$P4JOURNAL -d
+#p4d -r$P4ROOT -p$P4PORT -L$P4LOG -J$P4JOURNAL -d
