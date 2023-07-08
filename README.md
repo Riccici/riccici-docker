@@ -26,7 +26,7 @@ There are additional changes in the Dockerfile for Github Actions:
 
 - The server is forcefully initiated in Unicode mode.
 - The server is forcefully initiated in case-sensitive mode.
-- The super user's username and password are set to `admin` by default.
+- The super user's username/password are set to `admin/admin@password` by default.
 
 ##### Usage
 
