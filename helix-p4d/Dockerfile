@@ -39,6 +39,7 @@ COPY scripts/init.sh /usr/local/bin/init.sh
 COPY scripts/latest_checkpoint.sh /usr/local/bin/latest_checkpoint.sh
 COPY scripts/restore.sh /usr/local/bin/restore.sh
 COPY scripts/setup.sh /usr/local/bin/setup.sh
+COPY scripts/reset_typemap.sh /usr/local/bin/reset_typemap.sh
 
 RUN chmod +x /usr/local/bin/init.sh && \
     chmod +x /usr/local/bin/latest_checkpoint.sh && \
@@ -66,6 +67,9 @@ ENV NAME=$NAME \
     P4USER=$P4USER \
     P4PASSWD=$P4PASSWD \
     JNL_PREFIX=$P4NAME
+
+# if yout want to set perforce type map, set TYPEMAP_URL to your type map file url and run reset_type_map.sh
+ENV TYPEMAP_URL=""  
 
 EXPOSE $P4PORT
 VOLUME $P4ROOT
